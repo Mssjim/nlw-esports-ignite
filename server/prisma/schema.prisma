@@ -24,7 +24,7 @@ model Ad {
   hourStart       Int
   hourEnd         Int
   useVoiceChannel Boolean
-  createAt        DateTime @default(now())
+  createdAt       DateTime @default(now())
 
   game Game @relation(fields: [gameId], references: [id])
 }

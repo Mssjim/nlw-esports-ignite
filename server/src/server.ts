@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
+
 import { PrismaClient } from '@prisma/client';
+import { convertHourStringToMinutes } from "./utils/convert-hour-string-to-minutes";
+import { convertMinutesToHourString } from "./utils/convert-minutes-to-hour-string";
 
 const app = express();
 const prisma = new PrismaClient();
@@ -39,14 +42,16 @@ app.get('/games/:id/ads', async(req, res)=>{
             hourEnd: true
         },
         orderBy: {
-            createAt: 'desc'
+            createdAt: 'desc'
         }
     });
 
     return res.status(200).json(ads.map(ad => {
         return {
             ...ad,
-            weekDays: ad.weekDays.split(',')
+            weekDays: ad.weekDays.split(','),
+            hourStart: convertMinutesToHourString(ad.hourStart),
+            hourEnd: convertMinutesToHourString(ad.hourEnd),
         }
     }));
 });
@@ -58,7 +63,9 @@ app.post('/games/:id/ads', async(req, res) => {
         data: {
             ...req.body,
             gameId: id,
-            weekDays: req.body.weekDays.join(',')
+            weekDays: req.body.weekDays.join(','),
+            hourStart: convertHourStringToMinutes(req.body.hourStart),
+            hourEnd: convertHourStringToMinutes(req.body.hourEnd)
         }
     });
     
