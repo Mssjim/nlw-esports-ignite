@@ -15,6 +15,7 @@ import { Heading } from "../../components/Heading";
 import { Background } from "../../components/Background";
 import { DuoMatch } from "../../components/DuoMatch";
 import { DuoCard, DuoCardProps } from "../../components/DuoCard";
+import API from "../../utils/API";
 
 export function Game() {
   const [duos, setDuos] = useState<DuoCardProps[]>([])
@@ -29,13 +30,13 @@ export function Game() {
   }
 
   async function getDiscordUser(adsId: string) {
-    fetch(`http://192.168.1.21:3333/ads/${adsId}/discord`)
+    fetch(`${API}/ads/${adsId}/discord`)
       .then(response => response.json())
       .then(data => setDiscordDuoSelected(data.discord))
   }
 
   useEffect(() => {
-    fetch(`http://192.168.1.21:3333/games/${game.id}/ads`)
+    fetch(`${API}//games/${game.id}/ads`)
       .then(response => response.json())
       .then(data => setDuos(data))
   }, []);

@@ -10,6 +10,7 @@ import { Background } from "../../components/Background";
 import { Heading } from "../../components/Heading";
 
 import { styles } from './styles';
+import API from "../../utils/API";
 
 export function Home() {
   const [games, setGames] = useState<GameCardProps[]>([])
@@ -21,7 +22,7 @@ export function Home() {
   }
 
   useEffect(() => {
-    fetch('http://192.168.1.21:3333/games')
+    fetch(`${API}/games`)
       .then(response => response.json())
       .then(data => setGames(data))
   }, []);
