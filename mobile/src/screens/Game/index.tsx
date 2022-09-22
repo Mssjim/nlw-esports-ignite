@@ -36,7 +36,7 @@ export function Game() {
   }
 
   useEffect(() => {
-    fetch(`${API}//games/${game.id}/ads`)
+    fetch(`${API}/games/${game.id}/ads`)
       .then(response => response.json())
       .then(data => setDuos(data))
   }, []);

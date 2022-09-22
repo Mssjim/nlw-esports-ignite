@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Image, FlatList } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { Image, FlatList, Touchable, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
@@ -21,6 +21,10 @@ export function Home() {
     navigation.navigate('game', { id, title, bannerUrl });
   }
 
+  function handleOpenRoleta() {
+    navigation.navigate('roleta', games);
+  }
+
   useEffect(() => {
     fetch(`${API}/games`)
       .then(response => response.json())
@@ -30,9 +34,9 @@ export function Home() {
   return (
     <Background>
       <SafeAreaView style={styles.container}>
-        <Image
-          source={logoImg}
-          style={styles.logo}
+        <TouchableOpacity
+          style={{height: 42, width: '100%', backgroundColor: '#fff'}}
+          onPress={handleOpenRoleta}
         />
 
         <Heading

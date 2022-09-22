@@ -7,8 +7,9 @@ export interface GameParams {
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
-      home: undefined;
-      game: GameParams;
+      home: undefined,
+      game: GameParams,
+      roleta: GameParams[]
     }
   }
 }

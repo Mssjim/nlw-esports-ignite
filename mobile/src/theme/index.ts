@@ -1,7 +1,11 @@
+import { Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('screen');
+
 export const THEME = {
   COLORS: {
     BACKGROUND_900: '#121214',
     BACKGROUND_800: '#18181B',
+    BACKGROUND: '#fff',
 
     TEXT: '#FFFFFF',
 
@@ -12,7 +16,9 @@ export const THEME = {
     SHAPE: '#2A2634',
 
     PRIMARY: '#8B5CF6',
+    SECONDARY: '#0066EE',
     SUCCESS: '#34D399',
+    DANGER: '#FF4141',
     ALERT: '#F87171',
 
     FOOTER: ['rgba(0,0,0,0)', 'rgba(0,0,0,0.9)'],
@@ -30,5 +36,13 @@ export const THEME = {
     SM: 14,
     MD: 16,
     LG: 24
+  },
+
+  CARD: {
+    WIDTH: width * 0.9,
+    HEIGHT: height * 0.78,
+    BORDER_RADIUS: 20,
+    OUT_OF_SCREEN: width * 0.5 * width
   }
+
 };
