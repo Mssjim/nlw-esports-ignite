@@ -10,7 +10,7 @@ interface Props {
     source: string,
     isFirst: boolean,
     swipe: Animated.ValueXY,
-    tiltSign: number
+    tiltSign: any
 }
 
 export function Card({name, source, isFirst, swipe, tiltSign, ...rest}: Props) {

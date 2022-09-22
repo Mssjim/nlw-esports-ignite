@@ -6,7 +6,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { styles } from './styles';
 
 interface Props {
-    name: string,
+    name: any,
     size: number,
     color: string,
     onPress: Function
@@ -23,18 +23,18 @@ export function RoundButton({name, size, color, onPress}: Props) {
     }, []);
 
     return (
-            <TouchableWithoutFeedback
-                onPressIn={() => animateScale(0.8)}
-                delayPressIn={0}
-                onPressOut={() => {
-                    animateScale(1),
-                    onPress()
-                }}
-                delayPressOut={110}
-            >
-                <Animated.View style={[styles.container, {transform: [{ scale }]}]}>
-                    <FontAwesome name={name} size={size} color={color} />
-                </Animated.View>
-            </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback
+            onPressIn={() => animateScale(0.8)}
+            delayPressIn={0}
+            onPressOut={() => {
+                animateScale(1),
+                onPress()
+            }}
+            delayPressOut={110}
+        >
+            <Animated.View style={[styles.container, {transform: [{ scale }]}]}>
+                <FontAwesome name={name} size={size} color={color} />
+            </Animated.View>
+        </TouchableWithoutFeedback>
     );
 }

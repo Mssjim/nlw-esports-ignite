@@ -1,5 +1,4 @@
 import { Text, TouchableOpacity, View } from 'react-native';
-import { GameController } from "phosphor-react-native";
 
 import { DuoInfo } from "../DuoInfo";
 
@@ -49,9 +48,8 @@ export function DuoCard({ data, onConnect }: Props) {
         style={styles.button}
         onPress={onConnect}
       >
-        <GameController
-          color={THEME.COLORS.TEXT}
-          size={20}
+        <View
+          style={{backgroundColor: '#fff', height: 20, width: 20}}
         />
 
         <Text style={styles.buttonTitle}>

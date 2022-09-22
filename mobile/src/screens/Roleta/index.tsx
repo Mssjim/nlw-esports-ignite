@@ -34,7 +34,7 @@ export function Roleta() {
 
             if(isActionActive) {
                 Animated.timing(swipe, {
-                    duration: 200,
+                    duration: 500,
                     toValue: {
                         x: direction * THEME.CARD.OUT_OF_SCREEN,
                         y: dy
@@ -53,15 +53,15 @@ export function Roleta() {
         },
     });
     
-    const removeTopCard = useCallback(() => { // TODO navigate Chat
+    const removeTopCard = useCallback(() => {
         setCards((prevState) => prevState.slice(1));
         swipe.setValue({x: 0, y: 0});
     }, [swipe]);
 
-    const handleChoice = useCallback((direction: number) => {
+    const handleChoice = useCallback((direction: number) => { // TODO navigate Chat
         Animated.timing(swipe.x, {
             toValue: direction * THEME.CARD.OUT_OF_SCREEN,
-            duration: 400,
+            duration: 500,
             useNativeDriver: true,
         }).start(removeTopCard)
     }, [removeTopCard, swipe.x]);
